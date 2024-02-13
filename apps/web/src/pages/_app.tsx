@@ -9,6 +9,7 @@ if (process.env.NEXT_PUBLIC_API_MOCKING_ENABLED === '1') {
 
 const DPCNextRtkQStartPage = ({ Component, ...rest }: AppProps) => {
   const { store, props } = wrapper.useWrappedStore(rest)
+
   return (
     <>
       <Head>
@@ -20,5 +21,5 @@ const DPCNextRtkQStartPage = ({ Component, ...rest }: AppProps) => {
     </>
   )
 }
-//export default wrapper.withRedux(DPCNextRtkQStartPage)
+
 export default DPCNextRtkQStartPage

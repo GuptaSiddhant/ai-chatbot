@@ -24,10 +24,6 @@ export const databaseApiUsersSlice = databaseApiSlice.injectEndpoints({
   }),
 })
 
-// Export thunks for usage in SSR
-export const { getRunningQueriesThunk: getUserQueriesThunk } =
-  databaseApiUsersSlice.util
-
 export const { useGetUsersQuery, useGetUserQuery, useCreateUserMutation } =
   databaseApiUsersSlice
 

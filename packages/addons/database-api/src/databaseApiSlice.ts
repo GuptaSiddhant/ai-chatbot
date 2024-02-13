@@ -22,3 +22,6 @@ export const databaseApiSlice = createApi({
     // the end points are inject from respective slice
   }),
 })
+
+export const { getRunningQueriesThunk: getDatabaseQueriesThunk } =
+  databaseApiSlice.util

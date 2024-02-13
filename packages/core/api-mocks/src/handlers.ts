@@ -3,7 +3,7 @@
  * Add handlers for more mocked APIs below
  */
 
-import { exampleApiMockHandlers } from '@ddp-bot/example-api-mocks'
+import { exampleApiMockHandlers } from '@ddp-bot/database-api-mocks'
 
 // Here you can turn on or off mocking on a per API level
 const MOCK_EXAMPLE_API = 1

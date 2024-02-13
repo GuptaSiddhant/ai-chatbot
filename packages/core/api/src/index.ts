@@ -1,2 +1,2 @@
 export {}
-export * from '@ddp-bot/example-api'
+export * from '@ddp-bot/database-api'
