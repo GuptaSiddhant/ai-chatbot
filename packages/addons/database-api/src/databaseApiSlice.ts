@@ -17,6 +17,7 @@ export const databaseApiSlice = createApi({
       return action.payload[reducerPath]
     }
   },
+  tagTypes: ['User', 'Chat', 'Conversation'],
   // The "endpoints" represent operations and requests for this server
   endpoints: () => ({
     // the end points are inject from respective slice

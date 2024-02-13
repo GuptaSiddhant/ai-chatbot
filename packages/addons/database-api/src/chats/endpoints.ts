@@ -7,8 +7,11 @@ const endpoint = 'chats'
 
 export const databaseApiChatsSlice = databaseApiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getChats: builder.query<IChat[], void>({
-      query: () => ({ url: endpoint, responseHandler: 'json' }),
+    getChats: builder.query<IChat[], string>({
+      query: (userId) => ({
+        url: `${endpoint}?userId=${userId}`,
+        responseHandler: 'json',
+      }),
     }),
     getChat: builder.query<IChat, string>({
       query: (id) => ({ url: `${endpoint}/${id}`, responseHandler: 'json' }),
