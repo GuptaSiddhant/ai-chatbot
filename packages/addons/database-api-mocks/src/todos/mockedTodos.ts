@@ -1,4 +1,4 @@
-import { IExampleApiTodosResult } from '@ddp-bot/example-api'
+import { IExampleApiTodosResult } from '@ddp-bot/database-api'
 
 export const mockedExampleApiResult: IExampleApiTodosResult = {
   todos: [

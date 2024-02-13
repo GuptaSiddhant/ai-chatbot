@@ -2,15 +2,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { HYDRATE } from 'next-redux-wrapper'
 
-export const dummyJsonUrl = 'https://dummyjson.com/'
+export const databaseUrl = 'http://localhost:4000/'
 
 // Define our single API slice object
-export const exampleApiSlice = createApi({
+export const databaseApiSlice = createApi({
   // The cache reducer expects to be added at `state.api` (already default - this is optional)
-  reducerPath: 'exampleApi',
+  reducerPath: 'databaseApi',
   // All of our requests will have URLs starting with '/fakeApi'
   baseQuery: fetchBaseQuery({
-    baseUrl: dummyJsonUrl,
+    baseUrl: databaseUrl,
   }),
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {
@@ -18,7 +18,7 @@ export const exampleApiSlice = createApi({
     }
   },
   // The "endpoints" represent operations and requests for this server
-  endpoints: (builder) => ({
+  endpoints: () => ({
     // the end points are inject from respective slice
   }),
 })

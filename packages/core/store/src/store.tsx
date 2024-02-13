@@ -2,13 +2,13 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { createWrapper } from 'next-redux-wrapper'
 
-import { extra_midlewares, reducers } from './store_config'
+import { extra_middlewares, reducers } from './store_config'
 
 export const makeStore = () => {
   return configureStore({
     reducer: reducers,
     middleware: (getDefaultMiddleware) => {
-      return getDefaultMiddleware().concat(extra_midlewares)
+      return getDefaultMiddleware().concat(extra_middlewares)
     },
   })
 }

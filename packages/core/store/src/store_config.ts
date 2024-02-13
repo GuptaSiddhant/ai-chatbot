@@ -1,4 +1,4 @@
-import { exampleApiSlice } from '@ddp-bot/example-api'
+import { databaseApiSlice } from '@ddp-bot/database-api'
 import exampleSlice from './example/exampleSlice'
 
 /**
@@ -10,10 +10,10 @@ export const reducers = {
   //-----------------------------------------------------------
   // Add all api slices
   //-----------------------------------------------------------
-  [exampleApiSlice.reducerPath]: exampleApiSlice.reducer,
+  [databaseApiSlice.reducerPath]: databaseApiSlice.reducer,
 }
 
 //-----------------------------------------------------------
 // add all api middlewares here
 //-----------------------------------------------------------
-export const extra_midlewares = [exampleApiSlice.middleware]
+export const extra_middlewares = [databaseApiSlice.middleware]

@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { AppState } from '../../src'
-import { TExampleValue } from '@ddp-bot/types'
+
+type TExampleValue = number
 
 export type ExampleSliceState = { exampleValue: TExampleValue }
 

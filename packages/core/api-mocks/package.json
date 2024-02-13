@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@ddp-bot/types": "*",
-    "@ddp-bot/example-api-mocks": "*",
+    "@ddp-bot/database-api-mocks": "*",
     "msw": "^1.2.1"
   },
   "devDependencies": {

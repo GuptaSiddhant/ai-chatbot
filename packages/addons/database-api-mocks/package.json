@@ -1,5 +1,5 @@
 {
-  "name": "@ddp-bot/example-api",
+  "name": "@ddp-bot/database-api-mocks",
   "version": "0.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -20,16 +20,14 @@
     "clean:build": "yarn rimraf dist && yarn rimraf .turbo"
   },
   "dependencies": {
-    "@ddp-bot/types": "*",
-    "@reduxjs/toolkit": "^1.3.6",
-    "react-redux": "^8",
-    "next-redux-wrapper": "^8"
+    "msw": "^1.2.1",
+    "@ddp-bot/database-api": "*",
+    "@ddp-bot/types": "*"
   },
   "devDependencies": {
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "eslint": "latest",
-    "node-fetch": "^3.2.0",
     "react": "^18.2.0",
     "tsup": "^6.2.3",
     "typescript": "^5.0.2"

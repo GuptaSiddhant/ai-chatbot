@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@ddp-bot/types": "*",
-    "@ddp-bot/example-api": "*"
+    "@ddp-bot/database-api": "*"
   },
   "devDependencies": {
     "@types/react": "^18.0.14",

@@ -20,15 +20,17 @@
     "clean:build": "yarn turbo run clean:build && yarn rimraf node_modules/.cache/turbo",
     "build:storybook": "FORCE_COLOR=1 turbo run build:storybook --filter=web-ui",
     "build:packages": "FORCE_COLOR=1 turbo run build --filter=web^... ",
-    "build:web": "FORCE_COLOR=1 turbo run build --filter=web"
+    "build:web": "FORCE_COLOR=1 turbo run build --filter=web",
+    "db": "json-server db.json --port 4000"
   },
   "devDependencies": {
     "husky": "^8.0.1",
+    "jest": "^29.5.0",
+    "json-server": "^1.0.0-alpha.23",
     "prettier": "^2.5.1",
     "rimraf": "^4",
-    "turbo": "^1.9.3",
-    "jest": "^29.5.0",
-    "ts-jest": "^29.0.5"
+    "ts-jest": "^29.0.5",
+    "turbo": "^1.9.3"
   },
   "packageManager": "yarn@1.22.17",
   "engines": {

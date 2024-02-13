@@ -19,7 +19,7 @@
   "dependencies": {
     "@ddp-bot/api": "*",
     "@ddp-bot/api-mocks": "*",
-    "@ddp-bot/example-api": "*",
+    "@ddp-bot/database-api": "*",
     "@ddp-bot/store": "*",
     "@ddp-bot/types": "*",
     "@ddp-bot/web-ui": "*",
