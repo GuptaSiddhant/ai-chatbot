@@ -1,0 +1,61 @@
+{
+  "name": "@ddp-bot/web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next -p 3000",
+    "build": "next build",
+    "export": "next build && next export",
+    "start": "next start",
+    "type-check": "tsc",
+    "test": "jest --passWithNoTests",
+    "clean": "yarn clean:build && yarn clean:modules",
+    "clean:modules": "yarn rimraf node_modules",
+    "clean:build": "yarn rimraf dist && yarn rimraf .turbo && yarn rimraf .next",
+    "lint2": "TIMING=1 eslint src --fix",
+    "lint": "next lint",
+    "deploy:netlify": "netlify deploy --build -p"
+  },
+  "dependencies": {
+    "@ddp-bot/api-mocks": "*",
+    "@ddp-bot/api": "*",
+    "@ddp-bot/example-api": "*",
+    "@ddp-bot/store": "*",
+    "@ddp-bot/types": "*",
+    "@ddp-bot/web-ui": "*",
+    "next": "^13.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@netlify/plugin-nextjs": "^4.23.3",
+    "@testing-library/jest-dom": "^5.0.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^29.5.0",
+    "@types/node": "^18.0.0",
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
+    "autoprefixer": "^10.4.0",
+    "babel-loader": "^9",
+    "cross-var": "^1.1.0",
+    "eslint": "^8.23.1",
+    "jest": "^29.5.0",
+    "jest-css-modules-transform": "^4.2.0",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.7",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.2.1",
+    "typescript": "^5.0.2"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "eslintConfig": {
+    "extends": "../../packages/support/config/eslint/eslint-next"
+  },
+  "msw": {
+    "workerDirectory": "public"
+  }
+}

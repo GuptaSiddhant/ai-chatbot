@@ -1,0 +1,17 @@
+{
+  "recommendations": [
+    "dsznajder.es7-react-js-snippets",
+    "dbaeumer.vscode-eslint",
+    "formulahendry.auto-rename-tag",
+    "eamodio.gitlens",
+    "wix.vscode-import-cost",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "github.vscode-pull-request-github",
+    "hediet.vscode-drawio",
+    "meganrogge.template-string-converter",
+    "vivaxy.vscode-conventional-commits",
+    "usernamehw.errorlens",
+    "vivaxy.vscode-conventional-commits"
+  ]
+}

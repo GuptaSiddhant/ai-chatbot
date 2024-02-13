@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["ES2015", "DOM"],
+    "target": "ES6",
+    "module": "ESNext",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./src"
+  },
+  "exclude": ["node_modules", "src/__test__/**/*", "src/**/spec*"],
+  "extends": "@ddp-bot/config/tsconfig/base.json",
+  "include": ["src"]
+}

@@ -1,0 +1,50 @@
+{
+  // Editor
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+
+  "tailwindCSS.experimental.classRegex": [
+    ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairsHorizontal": "active",
+  "editor.inlineSuggest.enabled": true,
+  "editor.inlayHints.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.addMissingImports": "explicit",
+    "source.fixAll": "never"
+  },
+
+  // TS/JS
+  "javascript.suggest.autoImports": true,
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.suggest.completeFunctionCalls": true,
+  "typescript.suggest.completeFunctionCalls": true,
+  "javascript.referencesCodeLens.enabled": false,
+  "typescript.referencesCodeLens.enabled": false,
+  "javascript.preferences.jsxAttributeCompletionStyle": "braces",
+  "typescript.preferences.jsxAttributeCompletionStyle": "braces",
+  "javascript.suggest.paths": true,
+  "typescript.suggest.paths": true,
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "jest.jestCommandLine": "jest",
+  "favorites.resources": [
+    {
+      "filePath": "packages/ui/web-ui",
+      "group": "Default"
+    },
+    {
+      "filePath": "packages/ui/ui",
+      "group": "Default"
+    },
+    {
+      "filePath": "packages/ui",
+      "group": "Default"
+    }
+  ],
+  "conventionalCommits.scopes": ["certification", "web-ui-basic", "docs"]
+}

@@ -1,0 +1,162 @@
+import { Canvas, Meta, Story } from '@storybook/blocks'
+import { Text, TextTypes } from '../common/Text'
+import { AllText } from '../common/Text/Text.stories'
+export const TextTemplate = (args) => <Text {...args} />
+
+<Meta title="Song Turbo/Design System" />
+
+# Design System for DPC Next Basic
+
+## Introduction
+
+Here you will find design guidelines for Song Turbo Demo application
+
+- Typography
+- Colors
+- Buttons
+
+## **Typography**
+
+### Overview
+
+Typography for headings, subtitles, body text and caption.
+
+### Usage
+
+```html
+import { Text } from '../ui/common/Text' <Text type="h1" text="Heading 1" />
+```
+
+## Typography
+
+<Story of={AllText} />
+
+## **Spacing**
+
+### Overview
+
+To control padding and margin. TailwindCSS padding and margin classes, no import is required.
+
+### Usage
+
+**To add padding (p) or margin (m):**
+
+```
+p-{number}
+m-{number}
+```
+
+**To control the padding or margin on one side:**
+
+- t - top of the element
+- r - right side of the element
+- b - bottom of the element
+- l - left side of the element
+
+```
+p{t|r|b|l}-{number}
+m{t|r|b|l}-{number}
+```
+
+**To control the horizontal or vertical padding or margin:**
+
+- x - horizontal
+- y - vertical
+
+```
+p{x|y}-{number}
+m{x|y}-{number}
+```
+
+**Example:**
+
+```html
+<div className="p-10">Add a padding of 10 to all sides</div>
+```
+
+```html
+<div className="mx-4">Add a horizontal margin of 4</div>
+```
+
+## **Colors**
+
+### Overview
+
+Colors defined in tailwind.config.js, no import is required.
+
+Includes:
+
+- Primary: _For buttons, headers etc._
+- Secondary
+- Black: _For headings and body text, primarly headings_
+- Gray: _For headings and body text, primarly body text_
+- White: _For backgrounds_
+- Warning: _For warnings_
+- Error: _For errors_
+
+### Usage
+
+**Background color:**
+
+```
+bg-{color}
+
+```
+
+**Text color:**
+
+```
+text-{color}
+
+```
+
+**Border color:**
+
+```
+border-{color}
+
+```
+
+**Example:**
+
+```html
+<div className="bg-secondary-default text-white">
+  Background with gray color (secondary default) and white text
+</div>
+```
+
+### Available Colors
+
+<Story id="design-system-colors--colors" />
+
+## **Buttons**
+
+### Overview
+
+Buttons can take different properties.
+
+- primary, _boolean_
+- size - _'small' | 'medium' | 'large'_
+- additionalClassName - _string_, optional
+
+By default, **primary=false** and **size='medium'**.
+
+### Usage
+
+```javascript
+import { Button } from '../ui/common/Button'
+
+<Button primary size="medium"}>
+  Button
+</Button>
+```
+
+### Button variations
+
+<Canvas>
+  <Story id="common-button--primary" />
+  <Story id="common-button--secondary" />
+  <Story id="common-button--large" />
+  <Story id="common-button--small" />
+  <Story id="common-button--disabled" />
+</Canvas>

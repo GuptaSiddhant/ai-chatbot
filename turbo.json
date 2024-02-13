@@ -1,0 +1,30 @@
+{
+  "baseBranch": "origin/main",
+  "pipeline": {
+    "build:storybook": {
+      "outputs": ["storybook-static"],
+      "dependsOn": ["^build"],
+      "cache": false
+    },
+
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"],
+      "cache": false
+    },
+
+    "lint": {
+      "outputs": []
+    },
+
+    "clean": {},
+    "clean:build": {},
+    "dev": {},
+    "dev:storybook": {},
+
+    "build": {
+      "dependsOn": ["^build"],
+      "cache": false
+    }
+  }
+}
