@@ -12,7 +12,7 @@ const DPCNextRtkQStartPage = ({ Component, ...rest }: AppProps) => {
   return (
     <>
       <Head>
-        <title>DPC Next Basic Application</title>
+        <title>DDP Chatbot</title>
       </Head>
       <Provider store={store}>
         <Component {...props.pageProps} />

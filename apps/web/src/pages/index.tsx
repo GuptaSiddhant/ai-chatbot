@@ -18,12 +18,9 @@ const IndexPage: NextPage = () => {
   return (
     <PageLayout>
       <Text type="h1" bottomMargin={'large'}>
-        This is DPC Next RTKQ
+        DDP Chatbot
       </Text>
-      <Text bottomMargin="small">
-        A simple NextJS site with a minimal ui library containing a few basic
-        components
-      </Text>
+
       <Text
         type={'subtitle1'}
         bottomMargin="small"
@@ -44,7 +41,7 @@ const IndexPage: NextPage = () => {
   )
 }
 
-export const getStaticProps = wrapper.getStaticProps(
+export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (context) => {
     const id = context.params?.id
     if (typeof id === 'string') {

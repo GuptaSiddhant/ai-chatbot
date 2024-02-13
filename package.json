@@ -12,7 +12,7 @@
     ]
   },
   "scripts": {
-    "dev:web": "yarn build:packages && FORCE_COLOR=1 turbo run dev --parallel --no-cache --filter=*web...",
+    "dev:web": "yarn build:packages && FORCE_COLOR=1 turbo run dev --parallel --no-cache --filter=web...",
     "dev:storybook": "FORCE_COLOR=1 turbo run dev:storybook --filter=*web-ui... --no-cache --parallel",
     "lint": "FORCE_COLOR=1 turbo run lint",
     "test": "FORCE_COLOR=1 turbo run test",
@@ -20,7 +20,7 @@
     "clean:build": "yarn turbo run clean:build && yarn rimraf node_modules/.cache/turbo",
     "build:storybook": "FORCE_COLOR=1 turbo run build:storybook --filter=web-ui",
     "build:packages": "FORCE_COLOR=1 turbo run build --filter=web^... ",
-    "build:web": "FORCE_COLOR=1 turbo run build --filter=*web"
+    "build:web": "FORCE_COLOR=1 turbo run build --filter=web"
   },
   "devDependencies": {
     "husky": "^8.0.1",
@@ -29,7 +29,6 @@
     "turbo": "^1.9.3",
     "jest": "^29.5.0",
     "ts-jest": "^29.0.5"
-  
   },
   "packageManager": "yarn@1.22.17",
   "engines": {

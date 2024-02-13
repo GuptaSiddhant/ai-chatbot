@@ -17,13 +17,14 @@
     "deploy:netlify": "netlify deploy --build -p"
   },
   "dependencies": {
-    "@ddp-bot/api-mocks": "*",
     "@ddp-bot/api": "*",
+    "@ddp-bot/api-mocks": "*",
     "@ddp-bot/example-api": "*",
     "@ddp-bot/store": "*",
     "@ddp-bot/types": "*",
     "@ddp-bot/web-ui": "*",
     "next": "^13.4.1",
+    "openai": "^4.28.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -34,7 +35,7 @@
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.5.0",
-    "@types/node": "^18.0.0",
+    "@types/node": "^20.0.0",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "autoprefixer": "^10.4.0",
