@@ -1,4 +1,4 @@
-import { PageLayout, Text } from '@ddp-bot/web-ui'
+import { LogoutIcon, PageLayout, Text } from '@ddp-bot/web-ui'
 import Link from 'next/link'
 import { NewSession } from './NewSession'
 import { useGetChatsQuery, useGetUserQuery } from '@ddp-bot/database-api'
@@ -34,10 +34,14 @@ export function Layout({
         </section>
       }
       menuFooter={(collapsed) => (
-        <a href={'/api/logout'} className="flex gap-2">
-          <span>Icon</span>
-          <span hidden={collapsed}>{user?.name || 'Account'}</span>
-          <span hidden={collapsed}>{'Logout'}</span>
+        <a
+          href={'/api/logout'}
+          className="flex gap-2 items-center px-2"
+          title={'Logout'}
+        >
+          <LogoutIcon />
+
+          <span hidden={collapsed}>{user?.name || 'Logout'}</span>
         </a>
       )}
     >

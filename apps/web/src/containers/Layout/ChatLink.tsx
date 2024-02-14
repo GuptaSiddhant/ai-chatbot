@@ -1,5 +1,6 @@
 import { useDeleteChatMutation } from '@ddp-bot/database-api'
 import type { IChat } from '@ddp-bot/types'
+import { CrossIcon } from '@ddp-bot/web-ui'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useCallback } from 'react'
@@ -34,11 +35,11 @@ export function ChatLink({ chat }: { chat: IChat }) {
         <button
           title={`Delete chat ${chat.title}`}
           type="button"
-          className="px-2 px-1"
+          className="px-1 px-1"
           disabled={isLoading}
           onClick={handleClick}
         >
-          x
+          <CrossIcon />
         </button>
       </Link>
     </li>

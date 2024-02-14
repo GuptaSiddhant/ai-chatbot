@@ -63,15 +63,20 @@ export async function registerUser(
 export function checkUserAuthenticated(
   request: Request | { cookies: NextApiRequestCookies },
 ): string | undefined {
+  if (request instanceof Request) {
+    const cookie = request.headers.get('cookie')
+    console.log('cookie', cookie)
+    if (!cookie) return undefined
+
+    const parsedCookie = parseCookie(cookie)
+    return parsedCookie[AUTH_COOKIE_NAME]
+  }
+
   if ('cookies' in request) {
     return request.cookies[AUTH_COOKIE_NAME]
   }
 
-  const cookie = request.headers.get('cookie')
-  if (!cookie) return undefined
-
-  const parsedCookie = parseCookie(cookie)
-  return parsedCookie[AUTH_COOKIE_NAME]
+  return undefined
 }
 
 async function checkIsUsernameExist(

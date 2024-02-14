@@ -1,3 +1,5 @@
+import { ChevronLeftIcon } from 'icons'
+import { ChevronRightIcon } from 'icons/ChevronRightIcon'
 import React, { useState } from 'react'
 
 export const PageLayout = ({
@@ -36,7 +38,7 @@ export const PageLayout = ({
             }
             onClick={() => setMenuCollapsed((val) => !val)}
           >
-            {menuCollapsed ? '>' : '<'}
+            {menuCollapsed ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </button>
         </section>
 
