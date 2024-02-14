@@ -37,6 +37,7 @@ export async function POST(request: NextRequest) {
 
 async function checkIsUsernameTaken(username: string): Promise<boolean> {
   const response = await fetch(`${baseAuthUrl}?username=${username}`)
+  if (!response.ok) return false
   const data = await response.json()
   return Boolean(data[0])
 }

@@ -21,7 +21,7 @@
     "build:storybook": "FORCE_COLOR=1 turbo run build:storybook --filter=web-ui",
     "build:packages": "FORCE_COLOR=1 turbo run build --filter=web^... ",
     "build:web": "FORCE_COLOR=1 turbo run build --filter=web",
-    "db": "json-server db.json --port 4000"
+    "db": "sh db.sh"
   },
   "devDependencies": {
     "husky": "^8.0.1",

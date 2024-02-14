@@ -27,11 +27,10 @@ export default function useFetch<T>() {
     ) => {
       setFetchState({ status: 'pending', data: null, error: null })
       const response = await fetch(url, options)
-      console.log({ response })
+
       if (response.ok) {
         if (response.redirected) {
           const redirectUrl = response.url || response.headers.get('Location')
-          console.log({ redirectUrl })
           if (redirectUrl) router.push(redirectUrl)
         }
 
@@ -39,7 +38,10 @@ export default function useFetch<T>() {
         setFetchState({ status: 'resolved', data, error: null })
         onSuccess?.(data)
       } else {
-        const data = await response.json()
+        let data = { error: 'An error occurred' }
+        try {
+          data = await response.json()
+        } catch {}
         setFetchState({ status: 'rejected', data: null, error: data.error })
         onError?.(data.error)
       }
