@@ -27,6 +27,10 @@ export const databaseApiChatsSlice = databaseApiSlice.injectEndpoints({
         responseHandler: 'json',
       }),
     }),
+    deleteChat: builder.mutation<void, string>({
+      invalidatesTags: (result, error, id) => ['Chat', { type: 'Chat', id }],
+      query: (id) => ({ url: `${endpoint}/${id}`, method: 'DELETE' }),
+    }),
   }),
 })
 
@@ -34,8 +38,12 @@ export const databaseApiChatsSlice = databaseApiSlice.injectEndpoints({
 export const { getRunningQueriesThunk: getChatQueriesThunk } =
   databaseApiChatsSlice.util
 
-export const { useCreateChatMutation, useGetChatQuery, useGetChatsQuery } =
-  databaseApiChatsSlice
+export const {
+  useCreateChatMutation,
+  useGetChatQuery,
+  useGetChatsQuery,
+  useDeleteChatMutation,
+} = databaseApiChatsSlice
 
 // export endpoints for use in SSR
 export const { createChat, getChat, getChats } = databaseApiChatsSlice.endpoints

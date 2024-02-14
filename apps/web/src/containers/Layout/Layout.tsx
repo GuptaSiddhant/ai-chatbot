@@ -2,7 +2,7 @@ import { PageLayout, Text } from '@ddp-bot/web-ui'
 import Link from 'next/link'
 import { NewSession } from './NewSession'
 import { useGetChatsQuery, useGetUserQuery } from '@ddp-bot/database-api'
-import { IChat } from '@ddp-bot/types'
+import { ChatLink } from './ChatLink'
 
 export function Layout({
   children,
@@ -27,7 +27,7 @@ export function Layout({
           <nav className="py-4 h-[calc(100%_-_40px)]">
             <ul className="flex gap-2 flex-col overflow-y-auto h-full">
               {chats.map((chat) => (
-                <ChatItem key={chat.id} chat={chat} />
+                <ChatLink key={chat.id} chat={chat} />
               ))}
             </ul>
           </nav>
@@ -43,20 +43,5 @@ export function Layout({
     >
       {children}
     </PageLayout>
-  )
-}
-
-function ChatItem({ chat }: { chat: IChat }) {
-  return (
-    <li key={chat.id}>
-      <Link
-        href={chat.id}
-        className={
-          'w-full px-4 py-2 truncate flex border dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-sm'
-        }
-      >
-        {chat.title}
-      </Link>
-    </li>
   )
 }
