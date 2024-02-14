@@ -21,6 +21,7 @@ dist/**
 # misc
 .DS_Store
 *.pem
+db.json
 
 # debug
 npm-debug.log*

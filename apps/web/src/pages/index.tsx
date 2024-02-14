@@ -1,45 +1,36 @@
-import { NextPage } from 'next'
-import React from 'react'
-import { Text, PageLayout } from '@ddp-bot/web-ui'
+import { Text } from '@ddp-bot/web-ui'
 import {
   useGetChatsQuery,
-  getDatabaseQueriesThunk,
   getUser,
+  getChats,
+  useGetUserQuery,
 } from '@ddp-bot/api'
-import { wrapper } from '@ddp-bot/store'
+import { generateAuthGetServerSideProps } from 'utils/auth-server-props'
 
-const IndexPage: NextPage<{ id: string }> = (props) => {
-  const { data: chats } = useGetChatsQuery(props.id)
+interface IndexPageProps {
+  userId: string
+}
+
+export default function IndexPage(props: IndexPageProps) {
+  const { data: user } = useGetUserQuery(props.userId)
+  const { data: chats } = useGetChatsQuery(props.userId)
 
   return (
-    <PageLayout>
+    <>
       <Text type="h1" bottomMargin={'large'}>
-        DDP Chatbot
+        DDP Chatbot {user?.name}
       </Text>
       <a href={'/api/logout'}>Logout</a>
       <pre>{JSON.stringify(chats, null, 2)}</pre>
-    </PageLayout>
+    </>
   )
 }
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) => async (context) => {
-    const authUserId = context.req.cookies['ddp-user']
-    if (!authUserId) {
-      return {
-        redirect: { destination: '/login', statusCode: 301 },
-      }
-    }
-
-    store.dispatch(getUser.initiate(authUserId))
-
-    await Promise.all(store.dispatch(getDatabaseQueriesThunk()))
-    return {
-      props: {
-        id: authUserId,
-      },
-    }
-  },
-)
-
-export default IndexPage
+export const getServerSideProps =
+  generateAuthGetServerSideProps<IndexPageProps>(
+    async (store, _context, authUserId) => {
+      store.dispatch(getUser.initiate(authUserId))
+      store.dispatch(getChats.initiate(authUserId))
+      return { userId: authUserId }
+    },
+  )
