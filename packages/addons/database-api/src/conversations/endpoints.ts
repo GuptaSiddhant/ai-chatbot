@@ -7,19 +7,22 @@ const endpoint = 'conversations'
 
 export const databaseApiConversationsSlice = databaseApiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getConversations: builder.query<IConversation[], void>({
-      providesTags: [{ type: 'Conversation', id: 'LIST' }],
-      query: () => ({ url: endpoint, responseHandler: 'json' }),
-    }),
-    getConversation: builder.query<IConversation, string>({
-      providesTags: (result, error, id) => [{ type: 'Conversation', id }],
-      query: (id) => ({ url: `${endpoint}/${id}`, responseHandler: 'json' }),
+    getConversations: builder.query<IConversation[], { chatId: string }>({
+      providesTags: (result, error, { chatId }) => [
+        { type: 'Conversation', id: chatId },
+      ],
+      query: ({ chatId }) => ({
+        url: `${endpoint}?chatId=${chatId}`,
+        responseHandler: 'json',
+      }),
     }),
     createConversation: builder.mutation<
       IConversation,
       ICreateConversationPayload
     >({
-      invalidatesTags: [{ type: 'Conversation', id: 'LIST' }],
+      invalidatesTags: (result, error, { chatId }) => [
+        { type: 'Conversation', id: chatId },
+      ],
       query: (payload) => ({
         url: endpoint,
         method: 'POST',
@@ -34,12 +37,9 @@ export const databaseApiConversationsSlice = databaseApiSlice.injectEndpoints({
 export const { getRunningQueriesThunk: getConversationQueriesThunk } =
   databaseApiConversationsSlice.util
 
-export const {
-  useCreateConversationMutation,
-  useGetConversationQuery,
-  useGetConversationsQuery,
-} = databaseApiConversationsSlice
+export const { useCreateConversationMutation, useGetConversationsQuery } =
+  databaseApiConversationsSlice
 
 // export endpoints for use in SSR
-export const { createConversation, getConversation, getConversations } =
+export const { createConversation, getConversations } =
   databaseApiConversationsSlice.endpoints

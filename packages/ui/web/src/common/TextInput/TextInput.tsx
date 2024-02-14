@@ -5,7 +5,7 @@ export const TextInput = (props: TextInputProps) => {
   return (
     <input
       type="text"
-      className={'border rounded-sm p-2 dark:[color-scheme:dark] w-full'}
+      className={'border rounded p-2 dark:[color-scheme:dark] w-full'}
       {...props}
     />
   )

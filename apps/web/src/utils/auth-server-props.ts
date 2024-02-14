@@ -1,6 +1,14 @@
-import { getDatabaseQueriesThunk } from '@ddp-bot/database-api'
+import {
+  getChats,
+  getDatabaseQueriesThunk,
+  getUser,
+} from '@ddp-bot/database-api'
 import { wrapper, GetServerSidePropsCallback } from '@ddp-bot/store'
-import type { GetServerSidePropsContext, PreviewData } from 'next'
+import type {
+  GetServerSidePropsContext,
+  GetServerSidePropsResult,
+  PreviewData,
+} from 'next'
 import type { ParsedUrlQuery } from 'querystring'
 
 type extractGeneric<Type> = Type extends GetServerSidePropsCallback<
@@ -14,7 +22,7 @@ export type AuthGetServerSideCallback<Props extends object> = (
   store: extractGeneric<Parameters<(typeof wrapper)['getServerSideProps']>[0]>,
   context: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>,
   authUserId: string,
-) => Promise<Props>
+) => Promise<GetServerSidePropsResult<Props>>
 
 export function generateAuthGetServerSideProps<Props extends object>(
   callback: AuthGetServerSideCallback<Props>,
@@ -24,10 +32,13 @@ export function generateAuthGetServerSideProps<Props extends object>(
     if (!authUserId) {
       return { redirect: { destination: '/login', statusCode: 301 } } as const
     }
-    const props = await callback(store, context, authUserId)
+
+    store.dispatch(getUser.initiate(authUserId))
+    store.dispatch(getChats.initiate(authUserId))
+    const result = await callback(store, context, authUserId)
 
     await Promise.all(store.dispatch(getDatabaseQueriesThunk()))
 
-    return { props }
+    return result
   })
 }

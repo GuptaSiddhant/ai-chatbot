@@ -1,9 +1,11 @@
 import { useDeleteChatMutation } from '@ddp-bot/database-api'
 import type { IChat } from '@ddp-bot/types'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useCallback } from 'react'
 
 export function ChatLink({ chat }: { chat: IChat }) {
+  const { asPath } = useRouter()
   const [deleteChat, { isLoading }] = useDeleteChatMutation()
 
   const handleClick = useCallback(
@@ -21,9 +23,12 @@ export function ChatLink({ chat }: { chat: IChat }) {
     <li key={chat.id}>
       <Link
         href={chat.id}
-        className={
-          'w-full px-4 py-2 truncate flex justify-between items-center border dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-sm'
-        }
+        className={[
+          'w-full px-4 py-2 truncate flex justify-between items-center border dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-sm',
+          asPath === `/${chat.id}`
+            ? 'font-bold bg-slate-100 dark:bg-slate-800'
+            : 'font-normal',
+        ].join(' ')}
       >
         {chat.title}
         <button

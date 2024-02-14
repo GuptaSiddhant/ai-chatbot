@@ -49,8 +49,12 @@ export const PageLayout = ({
         </section>
       </aside>
 
-      <main className={'bg-white dark:bg-slate-900 h-full rounded shadow'}>
-        <div className={`px-8 pt-8`}>{children}</div>
+      <main
+        className={
+          'bg-white dark:bg-slate-900 h-full rounded shadow h-[calc(100vh_-_1rem)]'
+        }
+      >
+        {children}
       </main>
     </div>
   )

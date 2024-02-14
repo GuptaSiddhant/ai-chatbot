@@ -1,5 +1,5 @@
 import { getUser, getChats } from '@ddp-bot/api'
-import { Layout } from 'containers/Layout'
+import { Layout } from 'containers/layout'
 import { generateAuthGetServerSideProps } from 'utils/auth-server-props'
 
 interface IndexPageProps {
@@ -9,7 +9,11 @@ interface IndexPageProps {
 export default function IndexPage(props: IndexPageProps) {
   return (
     <Layout userId={props.userId}>
-      <pre></pre>
+      <div
+        className={'flex items-center justify-center h-full p-4 text-slate-500'}
+      >
+        Either select a chat or create a new one from the menu.
+      </div>
     </Layout>
   )
 }
@@ -19,6 +23,7 @@ export const getServerSideProps =
     async (store, _context, authUserId) => {
       store.dispatch(getUser.initiate(authUserId))
       store.dispatch(getChats.initiate(authUserId))
-      return { userId: authUserId }
+
+      return { props: { userId: authUserId } }
     },
   )
