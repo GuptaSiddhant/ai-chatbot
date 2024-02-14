@@ -1,10 +1,5 @@
-import { Text } from '@ddp-bot/web-ui'
-import {
-  useGetChatsQuery,
-  getUser,
-  getChats,
-  useGetUserQuery,
-} from '@ddp-bot/api'
+import { getUser, getChats } from '@ddp-bot/api'
+import { Layout } from 'containers/Layout'
 import { generateAuthGetServerSideProps } from 'utils/auth-server-props'
 
 interface IndexPageProps {
@@ -12,17 +7,10 @@ interface IndexPageProps {
 }
 
 export default function IndexPage(props: IndexPageProps) {
-  const { data: user } = useGetUserQuery(props.userId)
-  const { data: chats } = useGetChatsQuery(props.userId)
-
   return (
-    <>
-      <Text type="h1" bottomMargin={'large'}>
-        DDP Chatbot {user?.name}
-      </Text>
-      <a href={'/api/logout'}>Logout</a>
-      <pre>{JSON.stringify(chats, null, 2)}</pre>
-    </>
+    <Layout userId={props.userId}>
+      <pre></pre>
+    </Layout>
   )
 }
 

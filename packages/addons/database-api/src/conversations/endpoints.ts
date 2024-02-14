@@ -8,15 +8,18 @@ const endpoint = 'conversations'
 export const databaseApiConversationsSlice = databaseApiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getConversations: builder.query<IConversation[], void>({
+      providesTags: [{ type: 'Conversation', id: 'LIST' }],
       query: () => ({ url: endpoint, responseHandler: 'json' }),
     }),
     getConversation: builder.query<IConversation, string>({
+      providesTags: (result, error, id) => [{ type: 'Conversation', id }],
       query: (id) => ({ url: `${endpoint}/${id}`, responseHandler: 'json' }),
     }),
     createConversation: builder.mutation<
       IConversation,
       ICreateConversationPayload
     >({
+      invalidatesTags: [{ type: 'Conversation', id: 'LIST' }],
       query: (payload) => ({
         url: endpoint,
         method: 'POST',

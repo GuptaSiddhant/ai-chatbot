@@ -1,4 +1,4 @@
-import { Button, TextInput, Text } from '@ddp-bot/web-ui'
+import { Button, TextInput, Text, AuthLayout } from '@ddp-bot/web-ui'
 import Link from 'next/link'
 import { useCallback } from 'react'
 import useFetch from 'utils/use-fetch'
@@ -16,8 +16,8 @@ export default function Login() {
   )
 
   return (
-    <>
-      <Text type="h1" bottomMargin={'large'}>
+    <AuthLayout>
+      <Text type="h2" bottomMargin={'large'}>
         Login
       </Text>
       <form onSubmit={handleSubmit}>
@@ -31,6 +31,6 @@ export default function Login() {
         {error && <Text>{String(error)}</Text>}
       </form>
       <Link href={'/register'}>Register here.</Link>
-    </>
+    </AuthLayout>
   )
 }
