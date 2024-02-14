@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
 import { getOpenAIResponse } from 'services/openai-service'
+import { checkUserAuthenticated } from 'services/auth'
 
 export async function POST(request: NextRequest) {
-  const userId = cookies().get('ddp-user')?.value
-  if (!userId) {
+  if (!checkUserAuthenticated(request)) {
     return NextResponse.json({ error: 'Unauthenticated' }, { status: 401 })
   }
 

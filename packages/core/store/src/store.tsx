@@ -30,6 +30,6 @@ export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector
 
 export { Provider } from 'react-redux'
 
-export const wrapper = createWrapper<AppStore>(makeStore, { debug: true })
+export const wrapper = createWrapper<AppStore>(makeStore, { debug: false })
 
 export type * from 'next-redux-wrapper'

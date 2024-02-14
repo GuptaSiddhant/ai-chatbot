@@ -1,6 +1,7 @@
 import { Button, TextInput, Text, AuthLayout } from '@ddp-bot/web-ui'
 import Link from 'next/link'
 import { useCallback } from 'react'
+import { generateUnAuthGetServerSideProps } from 'utils/server-props'
 import useRequest from 'utils/use-fetch'
 
 export default function Login() {
@@ -34,3 +35,5 @@ export default function Login() {
     </AuthLayout>
   )
 }
+
+export const getServerSideProps = generateUnAuthGetServerSideProps()

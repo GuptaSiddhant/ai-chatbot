@@ -1,6 +1,6 @@
 import { getUser, getChats } from '@ddp-bot/api'
 import { Layout } from 'containers/layout'
-import { generateAuthGetServerSideProps } from 'utils/auth-server-props'
+import { generateAuthGetServerSideProps } from 'utils/server-props'
 
 interface IndexPageProps {
   userId: string

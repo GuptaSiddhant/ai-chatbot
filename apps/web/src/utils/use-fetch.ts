@@ -50,10 +50,8 @@ export default function useRequest<T>() {
         console.log({ response })
 
         if (response.ok) {
-          if (response.redirected) {
-            const redirectUrl = response.headers.get('Location')
-            if (redirectUrl) router.push(redirectUrl)
-          }
+          const redirectUrl = response.headers.get('Location')
+          if (redirectUrl) router.push(redirectUrl)
 
           const data = await response.json()
           setState({

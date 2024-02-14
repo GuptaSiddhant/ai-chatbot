@@ -3,7 +3,7 @@ import { ChatWindow } from 'containers/chat'
 import { Layout } from 'containers/layout'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { generateAuthGetServerSideProps } from 'utils/auth-server-props'
+import { generateAuthGetServerSideProps } from 'utils/server-props'
 
 interface IndexPageProps {
   userId: string
