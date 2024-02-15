@@ -65,7 +65,6 @@ export function checkUserAuthenticated(
 ): string | undefined {
   if (request instanceof Request) {
     const cookie = request.headers.get('cookie')
-    console.log('cookie', cookie)
     if (!cookie) return undefined
 
     const parsedCookie = parseCookie(cookie)

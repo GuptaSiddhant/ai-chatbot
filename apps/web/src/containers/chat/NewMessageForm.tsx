@@ -20,7 +20,6 @@ export function NewMessageForm({ chatId }: { chatId: string }) {
         { method: 'POST', body: formData },
         {
           onSuccess(data) {
-            console.log(data)
             createConversation({ chatId, ...data })
           },
         },

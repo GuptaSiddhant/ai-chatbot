@@ -47,8 +47,6 @@ export default function useRequest<T>() {
           signal: abortControllerRef.current.signal,
         })
 
-        console.log({ response })
-
         if (response.ok) {
           const redirectUrl = response.headers.get('Location')
           if (redirectUrl) router.push(redirectUrl)
