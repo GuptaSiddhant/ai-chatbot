@@ -53,7 +53,7 @@ export const PageLayout = ({
 
       <main
         className={
-          'bg-white dark:bg-slate-900 h-full rounded shadow h-[calc(100vh_-_1rem)]'
+          'bg-white dark:bg-slate-900 rounded shadow h-[calc(100vh_-_1rem)]'
         }
       >
         {children}

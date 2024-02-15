@@ -18,7 +18,7 @@ export function ChatWindow({
   return (
     <div
       className={
-        'p-2 h-full h-full w-full grid grid-rows-[1fr_max-content] overflow-hidden gap-4'
+        'p-2 h-full w-full grid grid-rows-[1fr_max-content] overflow-hidden gap-4'
       }
     >
       <output
