@@ -1,44 +1,12 @@
 # Project: @ddp-bot
 
-Based on Song Turbo Starter Project: _RTKQ_
-
-It contains a _NextJS_ App with a UI Library package. As well as packages for Typescript definitions and Redux toolkit. It also containg examples of using RTK Query for API fetching.
-
-## Next steps:
-
-- Initialize git and make the first commit
-
-  `git init -b main`
-
-  `git add .`
-
-  `git commit -m "chore: Project created"`
-
-- Connect a remote repository and push to it.
-
-  `git remote add origin <LINK TO REPO>`
-
-  `git push`
-
-- Setup CI/CD
-
-- Implement the project :-)
-
----
-
-## Packages source files:
-
-- The web app (_@ddp-bot/web_) - /apps/web
-- UI lib (_@ddp-bot/web-ui_) - /packages/ui/web-ui
-- Typescript (_@ddp-bot/types_) - /packages/core/types
-- Redux Toolkit (_@ddp-bot/store_) - /packages/core/store
-- RTK Query - (_@ddp-bot/api_) - /packages/core/api
-
----
-
 First of course is to install all packages:
 
 `yarn install`
+
+## Run database
+
+`yarn db`
 
 ## Development Web
 

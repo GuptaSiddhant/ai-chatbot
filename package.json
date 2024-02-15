@@ -13,7 +13,7 @@
   },
   "scripts": {
     "dev:web": "yarn build:packages && FORCE_COLOR=1 turbo run dev --parallel --no-cache --filter=web...",
-    "dev:storybook": "FORCE_COLOR=1 turbo run dev:storybook --filter=*web-ui... --no-cache --parallel",
+    "dev:storybook": "FORCE_COLOR=1 turbo run dev:storybook --filter=web-ui... --no-cache --parallel",
     "lint": "FORCE_COLOR=1 turbo run lint",
     "test": "FORCE_COLOR=1 turbo run test",
     "clean": "yarn turbo run clean && yarn rimraf node_modules ",

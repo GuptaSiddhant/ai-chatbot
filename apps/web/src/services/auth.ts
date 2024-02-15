@@ -63,16 +63,18 @@ export async function registerUser(
 export function checkUserAuthenticated(
   request: Request | { cookies: NextApiRequestCookies },
 ): string | undefined {
+  if (!request) return undefined
+
   if (request instanceof Request) {
     const cookie = request.headers.get('cookie')
     if (!cookie) return undefined
 
     const parsedCookie = parseCookie(cookie)
-    return parsedCookie[AUTH_COOKIE_NAME]
+    return parsedCookie?.[AUTH_COOKIE_NAME]
   }
 
   if ('cookies' in request) {
-    return request.cookies[AUTH_COOKIE_NAME]
+    return request.cookies?.[AUTH_COOKIE_NAME]
   }
 
   return undefined
@@ -103,5 +105,5 @@ function parseCookie(cookie: string) {
     .reduce((acc, v) => {
       acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[1].trim())
       return acc
-    }, {})
+    }, {} as Record<string, string>)
 }

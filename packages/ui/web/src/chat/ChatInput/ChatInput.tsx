@@ -1,4 +1,4 @@
-import { Button, TextInput } from 'common'
+import { Button, TextInput } from '../../common'
 
 export interface IChatInputProps {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
