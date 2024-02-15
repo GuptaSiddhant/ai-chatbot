@@ -33,10 +33,6 @@ It contains a _NextJS_ App with a UI Library package. As well as packages for Ty
 - Typescript (_@ddp-bot/types_) - /packages/core/types
 - Redux Toolkit (_@ddp-bot/store_) - /packages/core/store
 - RTK Query - (_@ddp-bot/api_) - /packages/core/api
-- API Mocking (MSW) - _@ddp-bot/api-mocks_- /packages/core-api-mocks
-
-- Example API - _@ddp-bot/example-api_- /packages/addons/example-api
-- Example Mocked API - _@ddp-bot/example-api-mocks_- /packages/addons/example-api-mocks
 
 ---
 

@@ -18,7 +18,6 @@
   },
   "dependencies": {
     "@ddp-bot/api": "*",
-    "@ddp-bot/api-mocks": "*",
     "@ddp-bot/database-api": "*",
     "@ddp-bot/store": "*",
     "@ddp-bot/types": "*",

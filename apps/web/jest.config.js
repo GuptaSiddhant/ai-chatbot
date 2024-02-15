@@ -1,6 +1,5 @@
-import type { InitialOptionsTsJest } from 'ts-jest/dist/types'
-
-const config: InitialOptionsTsJest = {
+/** @type {import("ts-jest/dist/types").JestConfigWithTsJest} */
+const config = {
   preset: 'ts-jest',
   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
   transform: {
@@ -15,4 +14,4 @@ const config: InitialOptionsTsJest = {
   modulePaths: ['<rootDir>/src'],
 }
 
-export default config
+module.exports = config
