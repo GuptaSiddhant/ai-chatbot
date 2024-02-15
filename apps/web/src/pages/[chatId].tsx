@@ -1,5 +1,5 @@
 import { getChat, getConversations, useGetChatQuery } from '@ddp-bot/api'
-import { ChatWindow } from 'containers/chat'
+import { ChatScreen } from 'containers/chat'
 import { Layout } from 'containers/layout'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
@@ -21,7 +21,7 @@ export default function ChatPage(props: IndexPageProps) {
 
   return (
     <Layout userId={props.userId}>
-      <ChatWindow chatId={props.chatId} />
+      <ChatScreen chatId={props.chatId} />
     </Layout>
   )
 }

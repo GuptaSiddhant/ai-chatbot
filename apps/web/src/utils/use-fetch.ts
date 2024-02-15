@@ -8,6 +8,14 @@ export type UseRequestState<T> = {
   cancel: () => void
 }
 
+export type RequestCallback<T> = (
+  request: Request,
+  options?: {
+    onSuccess?: (data: T) => void
+    onError?: (error: string) => void
+  },
+) => void
+
 export default function useRequest<T>() {
   const router = useRouter()
   const abortControllerRef = useRef<AbortController | undefined>(undefined)
@@ -19,18 +27,8 @@ export default function useRequest<T>() {
     cancel: () => abortControllerRef.current?.abort(),
   }))
 
-  const handle = useCallback(
-    async (
-      url: string,
-      options: RequestInit,
-      {
-        onError,
-        onSuccess,
-      }: {
-        onSuccess?: (data: T) => void
-        onError?: (error: string) => void
-      } = {},
-    ) => {
+  const handle: RequestCallback<T> = useCallback(
+    async (request, { onError, onSuccess } = {}) => {
       const abortController = new AbortController()
       abortControllerRef.current = abortController
 
@@ -38,37 +36,39 @@ export default function useRequest<T>() {
         status: 'pending',
         data: null,
         error: null,
-        cancel: () => abortControllerRef.current?.abort(),
+        cancel: abortControllerRef.current?.abort,
       })
 
       try {
-        const response = await fetch(url, {
-          ...options,
-          signal: abortControllerRef.current.signal,
-        })
+        const response = await fetch(request)
+
+        if (response.redirected) {
+          const redirectUrl = response.url || response.headers.get('Location')
+          return router.push(redirectUrl || '/')
+        }
 
         if (response.ok) {
-          const redirectUrl = response.headers.get('Location')
-          if (redirectUrl) router.push(redirectUrl)
-
           const data = await response.json()
           setState({
             status: 'resolved',
             data,
             error: null,
-            cancel: () => abortControllerRef.current?.abort(),
+            cancel: abortControllerRef.current?.abort,
           })
           onSuccess?.(data)
         } else {
           let data = { error: 'An error occurred' }
           try {
             data = await response.json()
-          } catch {}
+          } catch (error) {
+            // eslint-disable-next-line no-console
+            console.error(error)
+          }
           setState({
             status: 'rejected',
             data: null,
             error: data.error,
-            cancel: () => abortControllerRef.current?.abort(),
+            cancel: abortControllerRef.current?.abort,
           })
           onError?.(data.error)
         }
@@ -78,7 +78,7 @@ export default function useRequest<T>() {
             status: 'cancelled',
             data: null,
             error: error.message,
-            cancel: () => abortControllerRef.current?.abort(),
+            cancel: abortControllerRef.current?.abort,
           })
         } else {
           const message =
@@ -87,7 +87,7 @@ export default function useRequest<T>() {
             status: 'rejected',
             data: null,
             error: message,
-            cancel: () => abortControllerRef.current?.abort(),
+            cancel: abortControllerRef.current?.abort,
           })
           onError?.(message)
         }

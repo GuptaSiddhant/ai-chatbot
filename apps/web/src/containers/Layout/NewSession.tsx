@@ -29,6 +29,7 @@ export function NewSession({ userId }: { userId: string }) {
       className={'flex gap-2'}
     >
       <TextInput
+        label={''}
         name="title"
         placeholder={'New session name'}
         required

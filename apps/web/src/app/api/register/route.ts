@@ -14,5 +14,5 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Name is required' }, { status: 400 })
   }
 
-  return registerUser(request, username, name)
+  return await registerUser(request, username, name)
 }

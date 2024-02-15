@@ -11,7 +11,7 @@ export default function Login() {
     async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault()
       const formData = new FormData(event.currentTarget)
-      request('/api/login', { method: 'POST', body: formData })
+      request(new Request('/api/login', { method: 'POST', body: formData }))
     },
     [request],
   )
@@ -22,10 +22,8 @@ export default function Login() {
         Login
       </Text>
       <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <TextInput name="username" required />
-        </label>
+        <TextInput label={'Username'} name="username" required />
+
         <Button type="submit" disabled={status === 'pending'}>
           Login
         </Button>

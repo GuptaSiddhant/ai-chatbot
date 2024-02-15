@@ -1,8 +1,5 @@
-import { Story, Canvas } from '@storybook/addon-docs'
 import { Text, TextTypes, TextType } from './Text'
-import { Primary } from '../Button/Button.stories'
 import { StoryObj, Meta } from '@storybook/react'
-import { Component } from 'react'
 
 const meta: Meta<typeof Text> = {
   /* 👇 The title prop is optional.

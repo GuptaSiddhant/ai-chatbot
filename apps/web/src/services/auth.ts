@@ -17,7 +17,7 @@ export async function loginUser(request: Request, username: string) {
 
   const redirectUrl = new URL('/', request.url).toString()
   return NextResponse.redirect(redirectUrl, {
-    status: 302,
+    status: 307,
     headers: {
       'Set-Cookie': `${AUTH_COOKIE_NAME}=${user.id}; Path=/; httpOnly=true; SameSite=Lax`,
     },
@@ -28,7 +28,7 @@ export async function logoutUser(request: Request) {
   const redirectUrl = new URL('/login', request.url).toString()
 
   return NextResponse.redirect(redirectUrl, {
-    status: 301,
+    status: 307,
     headers: {
       'Set-Cookie': `${AUTH_COOKIE_NAME}=; Path=/; httpOnly=true; Max-Age=0; SameSite=Lax`,
     },

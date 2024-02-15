@@ -53,7 +53,7 @@ export function generateAuthGetServerSideProps<Props extends object>(
 export function generateUnAuthGetServerSideProps(
   successRedirect: string = '/',
 ) {
-  return wrapper.getServerSideProps<{}>((store) => async (context) => {
+  return wrapper.getServerSideProps<{}>(() => async (context) => {
     const authUserId = checkUserAuthenticated(context.req)
     if (authUserId) {
       return {

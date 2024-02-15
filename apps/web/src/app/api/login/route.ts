@@ -9,5 +9,5 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Username is required' }, { status: 400 })
   }
 
-  return loginUser(request, username)
+  return await loginUser(request, username)
 }

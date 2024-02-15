@@ -27,7 +27,7 @@ export function ConversationBubbles({
 
 export function formatAsLocalDateTime(date: Date | number | string): string {
   if (!date) return ''
-  return new Date(date).toLocaleDateString(undefined, {
+  return new Date(date).toLocaleDateString('en', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',

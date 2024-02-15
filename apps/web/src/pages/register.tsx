@@ -11,7 +11,7 @@ export default function Register() {
     async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault()
       const formData = new FormData(event.currentTarget)
-      request('/api/register', { method: 'POST', body: formData })
+      request(new Request('/api/register', { method: 'POST', body: formData }))
     },
     [request],
   )
@@ -22,15 +22,9 @@ export default function Register() {
         Register
       </Text>
       <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <TextInput name="username" required minLength={3} />
-        </label>
+        <TextInput label={'Username'} name="username" required minLength={3} />
+        <TextInput label={'Full name'} name="name" required />
 
-        <label>
-          Full name:
-          <TextInput name="name" required />
-        </label>
         <Button type="submit" disabled={status === 'pending'}>
           Register
         </Button>
