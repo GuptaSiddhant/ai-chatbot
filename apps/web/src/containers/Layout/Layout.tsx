@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { NewSession } from './NewSession'
 import { useGetChatsQuery, useGetUserQuery } from '@ddp-bot/database-api'
 import { ChatItem } from './ChatItem'
-import useRequest from 'utils/use-fetch'
+import useRequest from 'utils/use-request'
 
 export function Layout({
   children,

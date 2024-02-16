@@ -1,7 +1,7 @@
 import { useCreateConversationMutation } from '@ddp-bot/database-api'
 import { ChatInput } from '@ddp-bot/web-ui'
 import { useCallback } from 'react'
-import useRequest from 'utils/use-fetch'
+import useRequest from 'utils/use-request'
 
 export function NewMessageForm({ chatId }: { chatId: string }) {
   const [request, { status, cancel }] = useRequest<{
