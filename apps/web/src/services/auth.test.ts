@@ -1,7 +1,7 @@
 /**
  * @jest-environment node
- *
  */
+/* eslint-env jest */
 
 import {
   checkUserAuthenticated,

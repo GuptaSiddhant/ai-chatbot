@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useState } from 'react'
 
 export type UseRequestState<T> = {
   status: 'idle' | 'pending' | 'resolved' | 'rejected' | 'cancelled'
