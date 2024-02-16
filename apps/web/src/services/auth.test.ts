@@ -1,3 +1,4 @@
+/* eslint-env jest */
 /**
  * @jest-environment node
  */
@@ -87,7 +88,7 @@ describe('registerUser', () => {
   })
 
   test('should return error is username is not taken', async () => {
-    jest.spyOn(global, 'fetch').mockImplementationOnce((url, init) => {
+    jest.spyOn(global, 'fetch').mockImplementationOnce(() => {
       return Promise.resolve({
         ok: false,
         json: () => Promise.resolve([]),
