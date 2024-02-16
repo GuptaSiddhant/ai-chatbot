@@ -1,40 +1,35 @@
-import { ChevronLeftIcon } from 'icons'
-import { ChevronRightIcon } from 'icons/ChevronRightIcon'
 import React, { useState } from 'react'
+import { Text } from '../../common'
+import { ChevronLeftIcon, ChevronRightIcon } from '../../icons'
 
 export const PageLayout = ({
   children,
   defaultCollapsed = false,
   menuChildren,
   menuFooter,
-  menuHeader,
 }: {
   children: React.ReactNode
   defaultCollapsed?: boolean
-  menuHeader?: React.ReactNode
   menuChildren: React.ReactNode
   menuFooter: (collapsed: boolean) => React.ReactNode
 }) => {
   const [menuCollapsed, setMenuCollapsed] = useState(defaultCollapsed)
 
   return (
-    <div className="w-full h-screen bg-slate-200 text-slate-900 dark:bg-slate-800 dark:text-slate-100 grid grid-cols-[max-content_1fr] p-2 gap-2">
+    <div className="relative w-full h-screen bg-slate-200 text-slate-900 dark:bg-slate-800 dark:text-slate-100 grid grid-rows-[max-content_1fr] md:grid-cols-[max-content_1fr] p-2 gap-2 overflow-hidden">
       <aside
         className={[
-          'bg-white dark:bg-slate-900 h-full rounded shadow grid grid-rows-[max-content_1fr_max-content] p-2 gap-2 transition-all duration-300 ease-in-out overflow-hidden',
-          menuCollapsed ? 'w-12' : 'w-64',
+          'bg-white dark:bg-slate-900 h-max md:h-full rounded grid grid-rows-[max-content_1fr_max-content] p-2 gap-2 transition-[width] duration-300 ease-in-out overflow-hidden',
+          menuCollapsed ? 'md:w-12' : 'md:w-64',
         ].join(' ')}
       >
-        <section
-          className={
-            'border-b dark:border-slate-700 pb-2 flex items-center ' +
-            (menuCollapsed ? 'justify-end' : 'justify-between')
-          }
-        >
-          {menuCollapsed ? null : menuHeader}
+        <section className={'flex items-center justify-between'}>
+          <div className={menuCollapsed ? 'md:hidden' : ''}>
+            <Text type={'h4'}>DDP Chatbot</Text>
+          </div>
           <button
             className={
-              'border w-8 h-8 flex items-center justify-center rounded-sm dark:border-slate-700'
+              'border w-8 h-8 flex items-center justify-center rounded-sm dark:border-slate-700 rotate-90 md:rotate-0'
             }
             onClick={() => setMenuCollapsed((val) => !val)}
           >
@@ -42,10 +37,20 @@ export const PageLayout = ({
           </button>
         </section>
 
-        {menuCollapsed ? <section /> : menuChildren}
+        <section
+          className={
+            'min-h-0 overflow-hidden border-t pt-2 dark:border-slate-700 ' +
+            (menuCollapsed ? 'hidden md:flex' : '')
+          }
+        >
+          {menuCollapsed ? null : menuChildren}
+        </section>
 
         <section
-          className={'flex items-center border-t pt-2 dark:border-slate-700'}
+          className={
+            'items-center border-t pt-2 dark:border-slate-700 ' +
+            (menuCollapsed ? 'hidden md:flex' : '')
+          }
         >
           {menuFooter(menuCollapsed)}
         </section>
@@ -53,7 +58,7 @@ export const PageLayout = ({
 
       <main
         className={
-          'bg-white dark:bg-slate-900 rounded shadow h-[calc(100vh_-_1rem)]'
+          'bg-white dark:bg-slate-900 rounded shadow h-auto md:h-[calc(100vh_-_1rem)] overflow-hidden'
         }
       >
         {children}

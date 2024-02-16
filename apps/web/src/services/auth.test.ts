@@ -1,6 +1,6 @@
-/* eslint-env jest */
 /**
  * @jest-environment node
+ *
  */
 
 import {
