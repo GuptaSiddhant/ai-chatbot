@@ -5,6 +5,7 @@ export interface IChatInputProps {
   cancel: () => void
   isLoading: boolean
   isPending: boolean
+  children?: React.ReactNode
 }
 
 export function ChatInput({
@@ -12,9 +13,11 @@ export function ChatInput({
   isLoading,
   isPending,
   onSubmit,
+  children,
 }: IChatInputProps) {
   return (
     <form onSubmit={onSubmit} className={'flex gap-2'}>
+      {children}
       <TextInput
         label={''}
         name="message"

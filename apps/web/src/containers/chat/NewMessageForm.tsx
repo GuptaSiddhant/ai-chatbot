@@ -16,7 +16,9 @@ export function NewMessageForm({ chatId }: { chatId: string }) {
       event.preventDefault()
       const formData = new FormData(event.currentTarget)
       request(new Request('/api/ai', { method: 'POST', body: formData }), {
-        onSuccess: (data) => createConversation({ chatId, ...data }),
+        onSuccess: (data) => {
+          createConversation({ chatId, ...data })
+        },
       })
     },
     [chatId, createConversation, request],
@@ -29,6 +31,8 @@ export function NewMessageForm({ chatId }: { chatId: string }) {
       cancel={cancel}
       isLoading={isLoading}
       isPending={status === 'pending'}
-    />
+    >
+      <input type="hidden" name="chatId" value={chatId} />
+    </ChatInput>
   )
 }
