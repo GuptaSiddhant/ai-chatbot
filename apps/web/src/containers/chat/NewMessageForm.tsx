@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 import useRequest from 'utils/use-request'
 
 export function NewMessageForm({ chatId }: { chatId: string }) {
-  const [request, { status, cancel }] = useRequest<{
+  const [request, { status }] = useRequest<{
     userMessage: string
     botMessage: string
   }>()
@@ -28,9 +28,7 @@ export function NewMessageForm({ chatId }: { chatId: string }) {
     <ChatInput
       key={String(isSuccess)}
       onSubmit={handleSubmit}
-      cancel={cancel}
-      isLoading={isLoading}
-      isPending={status === 'pending'}
+      isLoading={status === 'pending' || isLoading}
     >
       <input type="hidden" name="chatId" value={chatId} />
     </ChatInput>

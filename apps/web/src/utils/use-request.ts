@@ -5,7 +5,6 @@ export type UseRequestState<T> = {
   status: 'idle' | 'pending' | 'resolved' | 'rejected' | 'cancelled'
   data: T | null
   error: string | null
-  cancel: () => void
 }
 
 export type RequestCallback<T> = (
@@ -18,25 +17,19 @@ export type RequestCallback<T> = (
 
 export default function useRequest<T>() {
   const router = useRouter()
-  const abortControllerRef = useRef<AbortController | undefined>(undefined)
 
   const [state, setState] = useState<UseRequestState<T>>(() => ({
     status: 'idle',
     data: null,
     error: null,
-    cancel: () => abortControllerRef.current?.abort(),
   }))
 
   const handle: RequestCallback<T> = useCallback(
     async (request, { onError, onSuccess } = {}) => {
-      const abortController = new AbortController()
-      abortControllerRef.current = abortController
-
       setState({
         status: 'pending',
         data: null,
         error: null,
-        cancel: abortControllerRef.current?.abort,
       })
 
       try {
@@ -53,7 +46,6 @@ export default function useRequest<T>() {
             status: 'resolved',
             data,
             error: null,
-            cancel: abortControllerRef.current?.abort,
           })
           onSuccess?.(data)
         } else {
@@ -68,7 +60,6 @@ export default function useRequest<T>() {
             status: 'rejected',
             data: null,
             error: data.error,
-            cancel: abortControllerRef.current?.abort,
           })
           onError?.(data.error)
         }
@@ -78,7 +69,6 @@ export default function useRequest<T>() {
             status: 'cancelled',
             data: null,
             error: error.message,
-            cancel: abortControllerRef.current?.abort,
           })
         } else {
           const message =
@@ -87,7 +77,6 @@ export default function useRequest<T>() {
             status: 'rejected',
             data: null,
             error: message,
-            cancel: abortControllerRef.current?.abort,
           })
           onError?.(message)
         }
