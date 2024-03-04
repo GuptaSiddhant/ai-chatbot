@@ -50,5 +50,3 @@ Generated app can be found at: /apps/web/.next
 Generated app can be found at: /packages/ui/web/storybook-static
 
 ---
-
-For questions contact bjorn.allvin@accenture.com
