@@ -1,4 +1,4 @@
-# Project: @ddp-bot
+# Project: ddp-bot
 
 First of course is to install all packages:
 
@@ -7,6 +7,13 @@ First of course is to install all packages:
 ## Run database
 
 `yarn db`
+
+## Setup OpenAI
+
+> To start development or build, you need an OpenAI API KEY
+
+- Duplicate the file `/apps/web/.env.template` and rename it to `.env`.
+- Replace the API value from `sk-` to your actual API KEY.
 
 ## Development Web
 
